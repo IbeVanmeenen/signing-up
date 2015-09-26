@@ -2,20 +2,60 @@
    Startkit
    ========================================================================== */
 
-var startkit = startkit || {};
+var signingUp = signingUp || {};
 
-startkit.app = function(undefined) {
+signingUp.app = function(undefined) {
 
-    var exports = this.app;
+    var initSubscribeForm = function() {
+        var form = document.getElementById('mc-subscribe'),
+            emailInput = document.getElementById('mce-email'),
+            submitBtn = document.getElementById('mc-subscribe-btn');
 
-    // Public function
-    exports.publicFunction = function() {
-        // Public function
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Loading btn
+            submitBtn.classList.add('main-form__btn--fetching');
+
+            // Ajax Request (not working :()
+            var request = new XMLHttpRequest();
+
+            request.open('GET', 'http://anatacreative.us11.list-manage.com/subscribe/post-json?u=5b006fabb177ac7cf7d2a67d5&amp;id=187f8b9c68&amp;c=?', true);
+
+            request.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                    var ChimpResponse = JSON.parse(this.response);
+
+                    console.log(ChimpResponse);
+
+                    if(ChimpResponse.result === "success") {
+                        console.log('success');
+                        form.classList.add('form--success');
+                    } else {
+                        console.log(':(');
+                    }
+
+                } else {
+                    submitBtn.classList.remove('main-form__btn--fetching');
+                    submitBtn.classList.add('main-form__btn--error');
+
+                    setTimeout(function() {
+                        submitBtn.classList.remove('main-form__btn--error');
+                    }, 500);
+                }
+            };
+            request.onerror = function() {
+
+            };
+
+            request.send("EMAIL=" + emailInput.value);
+        });
     };
+
 
     // Init
     var init = function() {
-        // Init (self-executing function)
+        initSubscribeForm();
     }();
 };
 
@@ -33,5 +73,5 @@ var ready = function(fn) {
 };
 
 ready(function() {
-    startkit.app();
+    signingUp.app();
 });
