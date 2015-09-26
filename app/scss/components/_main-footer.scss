@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Main Footer
+   ========================================================================== */
+
+.main-footer__link {
+    display: block;
+    width: 100%;
+    margin: 10vw auto;
+
+    font-size: .7rem;
+    text-align: center;
+    text-decoration: none;
+    color: #ccc;
+
+    @media (min-width: $screen--md) {
+        font-size: 1rem;
+    }
+}
+
+.main-footer__logo {
+    display: block;
+    margin: .3rem auto;
+    width: 2rem;
+
+    opacity: .22;
+
+    .st1 {
+        fill:#00A99D;
+    }
+    .st2 {
+        fill:#FFFFFF;
+    }
+
+    @media (min-width: $screen--md) {
+        width: 2.5rem;
+    }
+}
