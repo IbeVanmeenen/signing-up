@@ -15,6 +15,7 @@
     margin: 0;
     padding: 5vw 0 0;
 
+    font-family: 'Bree Serif', serif;
     font-size: 10vw;
     font-weight: normal;
     color: $white;
@@ -37,7 +38,7 @@
     width: 80vw;
     height: 80vw;
     margin: -40vw auto 0;
-    padding: 4rem;
+    padding: 2rem 4rem 4rem;
 
     background: $white;
     border-radius: 100%;
@@ -75,6 +76,7 @@
         width: 50vw;
         height: 50vw;
         margin: -25vw auto 0;
+        padding: 2rem 4rem 5rem;
 
         &:after {
             width: 3vw;
@@ -89,12 +91,18 @@
             height: 2vw;
         }
     }
+
+    @media (min-width: $screen--lg) {
+        padding: 2rem 4rem 8rem;
+    }
 }
 
 .main-head__vid__media {
     display: block;
-    width: 100%;
-    margin: 0;
+    height: 90%;
+    margin: 0 auto;
+
+    transform: translateX(10%);
 }
 
 
